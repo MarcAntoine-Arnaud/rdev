@@ -89,7 +89,7 @@ unsafe fn get_current_mouse_location() -> Option<CGPoint> {
 pub fn simulate(event_type: &EventType) -> Result<(), SimulateError> {
     unsafe {
         if let Some(cg_event) = convert_native(event_type) {
-            cg_event.post(CGEventTapLocation::HID);
+            cg_event.post(CGEventTapLocation::Session);
             Ok(())
         } else {
             Err(SimulateError)
